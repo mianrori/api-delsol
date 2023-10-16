@@ -1,4 +1,7 @@
-import "dotenv/config";
+//import "dotenv/config";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import config from "./config.js";
 import express from "express";
 import morganBody from "morgan-body";
@@ -6,6 +9,10 @@ import cors from "cors";
 import { connect } from "./src/database/db.js";
 import { router } from "./src/route/index.route.js";
 import { basicAuthHelper } from "./src/helper/basic-auth.helper.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 const app = express();
 
