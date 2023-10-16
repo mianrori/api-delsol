@@ -13,7 +13,7 @@ dotenv.config({ path: path.join(__dirname, ".env") });
 export const connect = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      oracledb.initOracleClient({ libDir: "C:\\oracle\\instantclient_19_10" });
+      oracledb.initOracleClient({ libDir: config.oracleClient });
       oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
       console.log(

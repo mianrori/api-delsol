@@ -16,6 +16,7 @@ const development = {
   dbSid: process.env.DB_SID_DEV,
   dbHost: process.env.DB_HOST_DEV,
   dbPort: process.env.DB_PORT_DEV,
+  oracleClient: process.env.ORACLE_CLIENT_DEV,
 };
 
 const production = {
@@ -25,6 +26,7 @@ const production = {
   dbSid: process.env.DB_SID_PROD,
   dbHost: process.env.DB_HOST_PROD,
   dbPort: process.env.DB_PORT_PROD,
+  oracleClient: process.env.ORACLE_CLIENT_PROD,
 };
 
 export const config = {
