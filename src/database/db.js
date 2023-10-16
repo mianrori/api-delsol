@@ -1,7 +1,14 @@
-import "dotenv/config";
+//import "dotenv/config";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import config from "../../config.js";
 import moment from "moment";
 import oracledb from "oracledb";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 export const connect = () => {
   return new Promise(async (resolve, reject) => {
