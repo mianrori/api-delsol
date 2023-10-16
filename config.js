@@ -19,12 +19,12 @@ const development = {
 };
 
 const production = {
-  port: process.env.PORT_PRO,
-  dbUser: process.env.DB_USER_PRO,
-  dbPassword: process.env.DB_PASSWORD_PRO,
-  dbSid: process.env.DB_SID_PRO,
-  dbHost: process.env.DB_HOST_PRO,
-  dbPort: process.env.DB_PORT_PRO,
+  port: process.env.PORT_PROD,
+  dbUser: process.env.DB_USER_PROD,
+  dbPassword: process.env.DB_PASSWORD_PROD,
+  dbSid: process.env.DB_SID_PROD,
+  dbHost: process.env.DB_HOST_PROD,
+  dbPort: process.env.DB_PORT_PROD,
 };
 
 export const config = {
