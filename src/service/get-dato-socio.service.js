@@ -22,7 +22,7 @@ export const getDatoSocioService = async (db, dni) => {
   const vencimientoData = await getSolVencimientoDb(db, dni);
   try {
     if (socioData) {
-      //await getSolBancoDb(db, dni);
+      await getSolBancoDb(db, dni);
       for (let i = 0; i < solData?.length; i++) {
         saldos.push({
           saldo: solData[i]["SALDO"],
