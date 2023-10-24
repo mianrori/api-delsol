@@ -4,6 +4,7 @@ export const getSocioDb = (db, dni) => {
       const result = await db.execute(
         `SELECT LOWER(a.name) nombre,
         LOWER(a.last_name) apellido,
+        a.sexo,
         NVL(busca_email(a.cod_comprador), '') email,
         NVL(busca_celular(a.cod_comprador, null), '') celular,
         NVL(TO_CHAR(a.fec_nacimiento, 'dd/mm/yyyy'), '') fecha_nacimiento,

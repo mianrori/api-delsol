@@ -73,6 +73,7 @@ export const getDatoSocioService = async (db, dni) => {
       result = {
         nombre: socioData["NOMBRE"],
         apellido: socioData["APELLIDO"],
+        sexo: socioData["SEXO"],
         email: socioData["EMAIL"] || "",
         celular: socioData["CELULAR"] || "",
         fechaNacimiento: socioData["FECHA_NACIMIENTO"] || "",
