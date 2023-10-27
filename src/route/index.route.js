@@ -11,6 +11,7 @@ import { transferirChequeSolLocalController } from "../controller/transferir-che
 import { getHistorialTransferenciaChequeSolController } from "../controller/get-historial-transferencia-chequesol.controller.js";
 import { getCotizacionSolController } from "../controller/get-cotizacion-sol.controller.js";
 import { updateSocioInformationController } from "../controller/update-socio-information.controller.js";
+import { getHistorialTransferenciaSolLocalController } from "../controller/get-historial-transferencia-sol-local.controller.js";
 
 export const router = express.Router();
 
@@ -38,3 +39,6 @@ router.route("/sol/cotizacion").get(getCotizacionSolController);
 router
   .route("/socio/informacion/actualizacion")
   .post(updateSocioInformationController);
+router
+  .route("/sol/transferencia/local/historial/:codCliente")
+  .get(getHistorialTransferenciaSolLocalController);
