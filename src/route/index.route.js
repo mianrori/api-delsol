@@ -12,6 +12,7 @@ import { getHistorialTransferenciaChequeSolController } from "../controller/get-
 import { getCotizacionSolController } from "../controller/get-cotizacion-sol.controller.js";
 import { updateSocioInformationController } from "../controller/update-socio-information.controller.js";
 import { getHistorialTransferenciaSolLocalController } from "../controller/get-historial-transferencia-sol-local.controller.js";
+import { getHistorialTransferenciaChequeDelSolLocalController } from "../controller/get-historial-transferencia-chequedelsol-local.controller.js";
 
 export const router = express.Router();
 
@@ -42,3 +43,6 @@ router
 router
   .route("/sol/transferencia/local/historial/:codCliente")
   .get(getHistorialTransferenciaSolLocalController);
+router
+  .route("/chequesol/transferencia/local/historial/:codCliente")
+  .get(getHistorialTransferenciaChequeDelSolLocalController);
