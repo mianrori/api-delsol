@@ -14,7 +14,7 @@ export const getExtractoSolService = async (db, dni, periodo, tipo) => {
         descripcion: extractoSolData[i]["DESCRIPCION"],
         nroComprobante: extractoSolData[i]["NRO_COMPROBANTE"],
         monto: extractoSolData[i]["MONTO"],
-        cantidadSol: extractoSolData[i]["CANTIDAD_SOL"],
+        cantidadSol: extractoSolData[i]["CANTIDAD_SOL"].toFixed(3),
       });
     }
   } catch (error) {
