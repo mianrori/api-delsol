@@ -1,4 +1,5 @@
 import express from "express";
+//import apicache from "apicache";
 import { getDatoSocioController } from "../controller/get-dato-socio.controller.js";
 import { addSocioController } from "../controller/add-socio.controller.js";
 import { getExtractoChequeDelSolController } from "../controller/get-extracto-chequedelsol.controller.js";
@@ -14,10 +15,13 @@ import { updateSocioInformationController } from "../controller/update-socio-inf
 import { getHistorialTransferenciaSolLocalController } from "../controller/get-historial-transferencia-sol-local.controller.js";
 import { getHistorialTransferenciaChequeDelSolLocalController } from "../controller/get-historial-transferencia-chequedelsol-local.controller.js";
 import { procesarVentaSolObsequioController } from "../controller/procesar-venta-sol-obsequio.controller.js";
+import { acreditarSolObsequioController } from "../controller/acreditar-sol-obsequio.controller.js";
 import { getExtractoSolController } from "../controller/get-extracto-sol.controller.js";
 
 export const router = express.Router();
+//const cache = apicache.middleware;
 
+//router.route("/socio/:dni").get(cache("1 minutes"), getDatoSocioController);
 router.route("/socio/:dni").get(getDatoSocioController);
 router.route("/socio").post(addSocioController);
 router
@@ -49,6 +53,7 @@ router
   .route("/chequesol/transferencia/local/historial/:codCliente")
   .get(getHistorialTransferenciaChequeDelSolLocalController);
 router.route("/sol/compra").post(procesarVentaSolObsequioController);
+router.route("/sol/credito").post(acreditarSolObsequioController);
 router
   .route("/socio/sol/extracto/:dni/:periodo/:tipo")
   .get(getExtractoSolController);
