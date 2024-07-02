@@ -17,7 +17,7 @@ export const transferirChequeSolLocalDb = (db, payload) => {
       );
       resolve({
         success: true,
-        message: "La tranferencia se realizó exitosamente.",
+        message: "La transferencia se realizó exitosamente.",
       });
     } catch (error) {
       let { message } = error;
