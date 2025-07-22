@@ -36,7 +36,9 @@ export const getSocioDb = (db, dni) => {
         NVL(a.activo, 'N') activo,
         LOWER(trim(a.direccion)) direccion,
         (SELECT b.estado FROM cf_banco_saldo_sol b WHERE b.dni = :dni) estado_banco,
-        NVL(a.comentario, '') comentario
+        NVL(a.comentario, '') comentario,
+        a.categoria,
+        NVL(a.limite_credito_sol,0) limite_credito_sol
    FROM cf_compradores a
   WHERE a.cod_comprador = :dni`,
         [dni]

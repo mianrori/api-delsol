@@ -4,12 +4,16 @@ export const getSolDb = (db, dni) => {
       const result = await db.execute(
         `SELECT dato.saldo,
         dato.transferible,
+        dato.valid_for_parking,
+        dato.valid_for_store,
         dato.id_tipo_sol,
         dato.descripcion_tipo_sol,
         dato.cotizacion_sol,
         dato.orden_uso
    FROM (SELECT TRUNC(SUM(a.saldo_soles)) saldo,
                 NVL(b.transferible, 'N') transferible,
+                NVL(b.valid_for_parking, 'N') valid_for_parking,
+                NVL(b.valid_for_store, 'N') valid_for_store,
                 a.id_tipo_sol,
                 b.descripcion descripcion_tipo_sol,
                 (CASE
@@ -49,12 +53,16 @@ export const getSolDb = (db, dni) => {
                     AND c.token_banco IS NOT NULL)
             AND a.cod_comprador = :dni
           GROUP BY NVL(b.transferible, 'N'),
+                   NVL(b.valid_for_parking, 'N'),
+                   NVL(b.valid_for_store, 'N'),
                    a.id_tipo_sol,
                    b.descripcion,
                    b.orden_uso
          UNION ALL
          SELECT TRUNC(SUM(e.saldo)),
                 NVL(f.transferible, 'N'),
+                NVL(f.valid_for_parking, 'N'),
+                NVL(f.valid_for_store, 'N'),
                 d.id_tipo_sol,
                 f.descripcion,
                 (CASE
@@ -90,6 +98,8 @@ export const getSolDb = (db, dni) => {
             AND TRUNC(e.vencimiento) >= TRUNC(sysdate)
             AND d.dni = :dni
           GROUP BY NVL(f.transferible, 'N'),
+                   NVL(f.valid_for_parking, 'N'),
+                   NVL(f.valid_for_store, 'N'),
                    d.id_tipo_sol,
                    f.descripcion,
                    f.orden_uso) dato

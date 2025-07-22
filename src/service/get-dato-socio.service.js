@@ -27,6 +27,9 @@ export const getDatoSocioService = async (db, dni) => {
         saldos.push({
           saldo: solData[i]["SALDO"],
           transferible: solData[i]["TRANSFERIBLE"] === "S" ? true : false,
+          validForParking:
+            solData[i]["VALID_FOR_PARKING"] === "S" ? true : false,
+          validForStore: solData[i]["VALID_FOR_STORE"] === "S" ? true : false,
           idTipoSol: solData[i]["ID_TIPO_SOL"],
           descripcionTipoSol: solData[i]["DESCRIPCION_TIPO_SOL"],
           cotizacionSol: solData[i]["COTIZACION_SOL"],
@@ -70,6 +73,7 @@ export const getDatoSocioService = async (db, dni) => {
             vencimientoData[i]["SALDO"] * vencimientoData[i]["COTIZACION_SOL"],
         });
       }
+
       result = {
         nombre: socioData["NOMBRE"],
         apellido: socioData["APELLIDO"],
@@ -87,6 +91,8 @@ export const getDatoSocioService = async (db, dni) => {
         chequeDelSol,
         cupones,
         premios,
+        categoria: socioData["CATEGORIA"],
+        limiteCreditoSolParking: socioData["LIMITE_CREDITO_SOL"],
       };
     }
   } catch (error) {
