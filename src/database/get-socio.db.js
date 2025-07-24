@@ -15,6 +15,7 @@ export const getSocioDb = (db, dni) => {
                        AND NVL(b.saldo_soles, 0) > 0
                        AND NVL(b.anulado, 'N') = 'N'
                        AND b.id_tipo_sol = c.id
+                       AND b.id_tipo_sol!=21
                        AND NOT EXISTS
                      (SELECT *
                               FROM cf_transacciones_cab c
