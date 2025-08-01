@@ -27,6 +27,7 @@ import { actualizaVehiculoActivoController } from "../controller/actualiza-vehic
 import { actualizaDatosVehiculoController } from "../controller/actualiza-datos-vehiculo.controller.js";
 import { getDniByMatriculaController } from "../controller/get-dni-by-matricula.controller.js";
 //import { procesarConversionSolController } from "../controller/procesar-conversion-sol.controller.js";
+import { getTiposSolesController } from "../controller/get-tipos-soles.controller.js";
 
 export const router = express.Router();
 //const cache = apicache.middleware;
@@ -77,3 +78,4 @@ router.route("/socio/vehiculo/:id").patch(actualizaVehiculoActivoController);
 router.route("/socio/vehiculo/:id").put(actualizaDatosVehiculoController);
 router.route("/socio/vehiculo/:matricula").get(getDniByMatriculaController);
 //router.route("/parking/sol/conversion").post(procesarConversionSolController);
+router.route("/sol/tipos").get(getTiposSolesController);
