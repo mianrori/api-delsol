@@ -15,8 +15,10 @@ export const basicAuthHelper = async (req, res, next) => {
   const [userName, password] = credentials.split(":");
   try {
     if (
-      userName !== process.env.API_USER ||
-      password !== process.env.API_PASSWORD
+      (userName !== process.env.API_USER ||
+        password !== process.env.API_PASSWORD) &&
+      (userName !== process.env.API_USER_TEISA ||
+        password !== process.env.API_PASSWORD_TEISA)
     ) {
       return res.status(401).json({
         success: false,
