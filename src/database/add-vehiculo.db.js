@@ -6,7 +6,7 @@ export const addVehiculoDb = (db, payload) => {
     try {
       const result = await db.execute(
         `BEGIN
-            pro_insertar_vehiculo_socio(:dni,:matricula,:marca,:modelo,:color);
+            pro_insertar_vehiculo_socio(:dni,:matricula,:marca,:modelo,:color,:solesGift);
          END;`,
         {
           dni: {
@@ -34,10 +34,12 @@ export const addVehiculoDb = (db, payload) => {
             val: color,
             type: oracledb.STRING,
           },
+          solesGift: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
         }
       );
       resolve({
         status: 200,
+        solesGift: result.outBinds.solesGift,
         success: true,
         message: "Vehículo creado exitosamente.",
       });
