@@ -1,11 +1,11 @@
 import oracledb from "oracledb";
 
-export const processPaymentDb = (db, payload) => {
+export const procesarConversionSolDb = (db, payload) => {
   return new Promise(async (resolve, reject) => {
     try {
       const result = await db.execute(
         `BEGIN
-            pro_procesa_pago_local(:payload,:id);
+            pro_conversion_soles(:payload);
          END;`,
         {
           payload: {
@@ -13,14 +13,12 @@ export const processPaymentDb = (db, payload) => {
             val: JSON.stringify(payload),
             type: oracledb.STRING,
           },
-          id: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
         }
       );
       resolve({
         status: 200,
-        idPago: result.outBinds.id,
         success: true,
-        message: "El pago se realizó exitosamente.",
+        message: "La conversión se realizó exitosamente.",
       });
     } catch (error) {
       let { message } = error;
@@ -28,13 +26,14 @@ export const processPaymentDb = (db, payload) => {
       console.log(`Error en processPaymentDb: ${error.message}`);
       let status = 500;
       if (
+        error.message.includes("20001") ||
+        error.message.includes("20002") ||
         error.message.includes("20003") ||
         error.message.includes("20004") ||
         error.message.includes("20005") ||
-        error.message.includes("20006") ||
-        error.message.includes("20010")
+        error.message.includes("20006")
       ) {
-        status = 402;
+        status = 409;
       }
       reject({
         status,
@@ -45,4 +44,4 @@ export const processPaymentDb = (db, payload) => {
   });
 };
 
-export default { processPaymentDb };
+export default { procesarConversionSolDb };

@@ -17,16 +17,16 @@ import { getHistorialTransferenciaChequeDelSolLocalController } from "../control
 import { procesarVentaSolObsequioController } from "../controller/procesar-venta-sol-obsequio.controller.js";
 import { acreditarSolObsequioController } from "../controller/acreditar-sol-obsequio.controller.js";
 import { getExtractoSolController } from "../controller/get-extracto-sol.controller.js";
-//import { procesarFacturaParkingController } from "../controller/procesar-factura-parking.controller.js";
+import { procesarFacturaParkingController } from "../controller/procesar-factura-parking.controller.js";
 import { addVehiculoController } from "../controller/add-vehiculo.controller.js";
-//import { downloadInvoiceController } from "../controller/download-invoice.controller.js";
-//import { getFacturasController } from "../controller/get-facturas.controller.js";
+import { downloadInvoiceController } from "../controller/download-invoice.controller.js";
+import { getFacturasController } from "../controller/get-facturas.controller.js";
 //import { procesarVentaSolParkingController } from "../controller/procesar-venta-sol-parking.controller.js";
 import { getVehiculosController } from "../controller/get-vehiculos.controller.js";
 import { actualizaVehiculoActivoController } from "../controller/actualiza-vehiculo-activo.controller.js";
 import { actualizaDatosVehiculoController } from "../controller/actualiza-datos-vehiculo.controller.js";
 import { getDniByMatriculaController } from "../controller/get-dni-by-matricula.controller.js";
-//import { procesarConversionSolController } from "../controller/procesar-conversion-sol.controller.js";
+import { procesarConversionSolController } from "../controller/procesar-conversion-sol.controller.js";
 import { getTiposSolesController } from "../controller/get-tipos-soles.controller.js";
 
 export const router = express.Router();
@@ -68,14 +68,14 @@ router.route("/sol/credito").post(acreditarSolObsequioController);
 router
   .route("/socio/sol/extracto/:dni/:periodo/:tipo")
   .get(getExtractoSolController);
-//router.route("/parking/factura").post(procesarFacturaParkingController);
+router.route("/parking/factura").post(procesarFacturaParkingController);
 router.route("/socio/vehiculo").post(addVehiculoController);
-//router.route("/socio/factura/:filename").get(downloadInvoiceController);
-//router.route("/socio/facturas/:dni").get(getFacturasController);
+router.route("/socio/factura/:filename").get(downloadInvoiceController);
+router.route("/socio/facturas/:dni").get(getFacturasController);
 //router.route("/parking/sol/compra").post(procesarVentaSolParkingController);
 router.route("/socio/vehiculos/:dni").get(getVehiculosController);
 router.route("/socio/vehiculo/:id").patch(actualizaVehiculoActivoController);
 router.route("/socio/vehiculo/:id").put(actualizaDatosVehiculoController);
 router.route("/socio/vehiculo/:matricula").get(getDniByMatriculaController);
-//router.route("/parking/sol/conversion").post(procesarConversionSolController);
+router.route("/parking/sol/conversion").post(procesarConversionSolController);
 router.route("/sol/tipos").get(getTiposSolesController);

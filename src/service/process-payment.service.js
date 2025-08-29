@@ -5,10 +5,10 @@ export const processPaymentService = async (db, payload, res) => {
   try {
     if (payload) {
       result = await processPaymentDb(db, payload);
-      res.status(200).json(result);
+      res.status(result.status).json(result);
     }
   } catch (error) {
-    res.status(500).json(error);
+    res.status(error.status).json(error);
   }
 };
 
