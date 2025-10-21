@@ -29,6 +29,7 @@ import { getDniByMatriculaController } from "../controller/get-dni-by-matricula.
 import { procesarConversionSolController } from "../controller/procesar-conversion-sol.controller.js";
 import { getTiposSolesController } from "../controller/get-tipos-soles.controller.js";
 import { getChapasLocatariosController } from "../controller/get-chapas-locatarios.controller.js";
+import { getMatriculasController } from "../controller/get-matriculas.controller.js";
 
 export const router = express.Router();
 //const cache = apicache.middleware;
@@ -83,3 +84,4 @@ router.route("/sol/tipos").get(getTiposSolesController);
 router
   .route("/locales/locatarios/matriculas")
   .get(getChapasLocatariosController);
+router.route("/parking/matriculas").get(getMatriculasController);
