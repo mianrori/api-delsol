@@ -87,7 +87,7 @@ export const getSolVencimientoDb = (db, dni) => {
             AND d.dni = :dni
           GROUP BY e.vencimiento, d.id_tipo_sol, f.descripcion, f.orden_uso) dato
   WHERE dato.saldo > 0
-  ORDER BY 6`,
+  ORDER BY 6,2`,
         [dni]
       );
       if (result.rows.length === 0) {
