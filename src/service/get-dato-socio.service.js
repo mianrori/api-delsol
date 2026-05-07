@@ -64,7 +64,7 @@ export const getDatoSocioService = async (db, dni) => {
         vencimientos.push({
           saldo: vencimientoData[i]["SALDO"],
           vencimiento: moment(vencimientoData[i]["VENCIMIENTO"]).format(
-            "DD/MM/YYYY"
+            "DD/MM/YYYY",
           ),
           idTipoSol: vencimientoData[i]["ID_TIPO_SOL"],
           descripcionTipoSol: vencimientoData[i]["DESCRIPCION_TIPO_SOL"],

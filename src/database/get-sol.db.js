@@ -104,8 +104,8 @@ export const getSolDb = (db, dni) => {
                    f.descripcion,
                    f.orden_uso) dato
   WHERE dato.saldo > 0
-  ORDER BY 6`,
-        [dni]
+  ORDER BY 8`,
+        [dni],
       );
       if (result.rows.length === 0) {
         resolve(null);

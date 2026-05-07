@@ -14,7 +14,7 @@ export const processPaymentDb = (db, payload) => {
             type: oracledb.STRING,
           },
           id: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
-        }
+        },
       );
       resolve({
         status: 200,
@@ -24,7 +24,7 @@ export const processPaymentDb = (db, payload) => {
       });
     } catch (error) {
       let { message } = error;
-      message = message.split("\n")[0].split(":")[1].trim();
+      message = message.split("\n")[0].split(":")[1]; /*.trim();*/
       console.log(`Error en processPaymentDb: ${error.message}`);
       let status = 500;
       if (

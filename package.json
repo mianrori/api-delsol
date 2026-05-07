@@ -19,7 +19,7 @@
     "moment-timezone": "^0.5.43",
     "morgan": "^1.10.0",
     "morgan-body": "^2.6.9",
-    "oracledb": "^6.1.0"
+    "oracledb": "^6.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
