@@ -6,7 +6,7 @@ export const getCotizacionSolDb = (db) => {
         LOWER(a.descripcion) descripcion,
         NVL(a.transferible, 'N') transferible,
         (CASE
-          WHEN a.id NOT IN(2,6,22) AND NVL((SELECT COUNT(e.id)
+          WHEN a.id IN(1) AND NVL((SELECT COUNT(e.id)
                      FROM cf_promo_cotiza_sol e, cf_promociones_det f
                     WHERE e.cod_empresa = f.cod_empresa
                       AND e.cod_promocion = f.cod_promocion
@@ -29,7 +29,7 @@ export const getCotizacionSolDb = (db) => {
                0)
         END) cotizacion
    FROM cf_tipo_sol a
-  ORDER BY a.id`
+  ORDER BY a.id`,
       );
       if (result.rows.length === 0) {
         resolve(null);

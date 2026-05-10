@@ -13,7 +13,7 @@ export const getSolVencimientoDb = (db, dni) => {
                 a.id_tipo_sol,
                 b.descripcion descripcion_tipo_sol,
                 (CASE
-                  WHEN a.id_tipo_sol NOT IN(2,6,22) AND NVL((SELECT COUNT(e.id)
+                  WHEN a.id_tipo_sol IN(1) AND NVL((SELECT COUNT(e.id)
                              FROM cf_promo_cotiza_sol e, cf_promociones_det f
                             WHERE e.cod_empresa = f.cod_empresa
                               AND e.cod_promocion = f.cod_promocion
@@ -88,7 +88,7 @@ export const getSolVencimientoDb = (db, dni) => {
           GROUP BY e.vencimiento, d.id_tipo_sol, f.descripcion, f.orden_uso) dato
   WHERE dato.saldo > 0
   ORDER BY 6,2`,
-        [dni]
+        [dni],
       );
       if (result.rows.length === 0) {
         resolve(null);
@@ -97,7 +97,7 @@ export const getSolVencimientoDb = (db, dni) => {
       }
     } catch (error) {
       reject(
-        `Error en getSolVencimientoDb: ${error.message.replace(/['"]+/g, "")}`
+        `Error en getSolVencimientoDb: ${error.message.replace(/['"]+/g, "")}`,
       );
     }
   });

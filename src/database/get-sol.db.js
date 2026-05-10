@@ -17,7 +17,7 @@ export const getSolDb = (db, dni) => {
                 a.id_tipo_sol,
                 b.descripcion descripcion_tipo_sol,
                 (CASE
-                  WHEN a.id_tipo_sol NOT IN(2,6,22) AND NVL((SELECT COUNT(e.id)
+                  WHEN a.id_tipo_sol IN(1) AND NVL((SELECT COUNT(e.id)
                              FROM cf_promo_cotiza_sol e, cf_promociones_det f
                             WHERE e.cod_empresa = f.cod_empresa
                               AND e.cod_promocion = f.cod_promocion
